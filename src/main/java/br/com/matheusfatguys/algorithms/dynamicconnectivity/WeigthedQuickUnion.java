@@ -17,7 +17,7 @@ public class WeigthedQuickUnion extends QuickUnion {
         super(N);
         s = new int[N];
         for (int i = 0; i < s.length; i++) {
-            s[i] = 0;
+            s[i] = 1;
         }
     }
 
@@ -31,11 +31,11 @@ public class WeigthedQuickUnion extends QuickUnion {
         
         if(s[pRoot]<s[qRoot]){
             ids[pRoot]=qRoot;
-            s[pRoot]+=s[qRoot];
+            s[qRoot]+=s[pRoot];
         }
         else{
             ids[qRoot]=pRoot;
-            s[qRoot]+=s[pRoot];
+            s[pRoot]+=s[qRoot];
         }
         
         
