@@ -5,18 +5,22 @@
  */
 package br.com.matheusfatguys.algorithms.dynamicconnectivity;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
  * @author mathe
  */
-public class WeigthedQuickUnionTest {
+public class PathCompressedWeigthedQuickUnionTest {
+    
+    public PathCompressedWeigthedQuickUnionTest() {
+    }
+    
     @Test
     public void testarDemo(){
-        DynamicConnectivity algorithm = new WeigthedQuickUnion(10);
-        int expected[] = new int[]{6,2,6,4,6,6,6,2,4,4};
+        DynamicConnectivity algorithm = new PathCompressedWeigthedQuickUnion(10);
+        int expected[] = new int[]{6,2,6,4,6,6,6,6,4,4};
         algorithm.union(4,3);
         algorithm.union(3,8);
         algorithm.union(6,5);
@@ -29,5 +33,13 @@ public class WeigthedQuickUnionTest {
         
         int actual[] = algorithm.getSolution();
         assertArrayEquals(expected, actual);
+        
+        for (int i = 0; i < actual.length; i++) {
+            int root = algorithm.root(i);
+            
+            assertEquals(6, root);
+            
+        }
     }
+    
 }
